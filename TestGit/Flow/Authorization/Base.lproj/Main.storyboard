@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iij-uv-jnv">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="museosanscyrl_100.otf">
+            <string>MuseoSansCyrl-100</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Authorization View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="AuthorizationViewControllerID" id="BYZ-38-t0r" customClass="AuthorizationViewController" customModule="TestGit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackGroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="A46-yV-6uT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0hL-Xq-ks5">
+                                <rect key="frame" x="7" y="413" width="400" height="124"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MHL-PT-pR7">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="34"/>
+                                        <fontDescription key="fontDescription" name="MuseoSansCyrl-100" family="Museo Sans Cyrl" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eaW-bg-kh2">
+                                        <rect key="frame" x="0.0" y="44" width="400" height="34"/>
+                                        <fontDescription key="fontDescription" name="MuseoSansCyrl-100" family="Museo Sans Cyrl" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79d-ag-bqm" customClass="CustomButton" customModule="TestGit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88" width="400" height="36"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="MuseoSansCyrl-100" family="Museo Sans Cyrl" pointSize="20"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backGroundColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6GQ-zv-yhd"/>
+                                            <segue destination="VUw-dx-k0v" kind="show" id="AMm-mQ-aGV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QNi-Au-8BC">
+                                <rect key="frame" x="7" y="545" width="400" height="31"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0Q-XO-DkH">
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                        <color key="onTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmF-Ro-uUw">
+                                        <rect key="frame" x="59" y="0.0" width="341" height="31"/>
+                                        <fontDescription key="fontDescription" name="MuseoSansCyrl-100" family="Museo Sans Cyrl" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="LmF-Ro-uUw" firstAttribute="leading" secondItem="c0Q-XO-DkH" secondAttribute="trailing" constant="10" id="n3C-kN-Rjy"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA2-JN-7En">
+                                <rect key="frame" x="20" y="405" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" name="MuseoSansCyrl-100" family="Museo Sans Cyrl" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oA2-JN-7En" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="D4A-TK-zB0"/>
+                            <constraint firstItem="A46-yV-6uT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KrF-zO-sOh"/>
+                            <constraint firstItem="A46-yV-6uT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Mch-4M-nky"/>
+                            <constraint firstItem="0hL-Xq-ks5" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="N1A-MS-MLv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oA2-JN-7En" secondAttribute="trailing" constant="20" id="Twr-m6-2Kq"/>
+                            <constraint firstAttribute="trailing" secondItem="A46-yV-6uT" secondAttribute="trailing" id="UXJ-p0-Bmq"/>
+                            <constraint firstAttribute="bottom" secondItem="A46-yV-6uT" secondAttribute="bottom" id="dsk-Qp-Ms5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0hL-Xq-ks5" secondAttribute="trailing" constant="7" id="gPv-hr-VlA"/>
+                            <constraint firstItem="QNi-Au-8BC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="7" id="gRO-Xk-Z8A"/>
+                            <constraint firstItem="0hL-Xq-ks5" firstAttribute="top" secondItem="oA2-JN-7En" secondAttribute="bottom" constant="8" id="hyF-E6-aZN"/>
+                            <constraint firstItem="0hL-Xq-ks5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="7" id="kST-C4-HFg"/>
+                            <constraint firstItem="QNi-Au-8BC" firstAttribute="top" secondItem="0hL-Xq-ks5" secondAttribute="bottom" constant="8" symbolic="YES" id="kkF-3f-fhp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QNi-Au-8BC" secondAttribute="trailing" constant="7" id="rqb-bs-7C0"/>
+                            <constraint firstItem="0hL-Xq-ks5" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="vWw-br-o0F"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fp5-Tq-b4p"/>
+                    <connections>
+                        <outlet property="acceptionLabel" destination="LmF-Ro-uUw" id="YNB-kp-mHr"/>
+                        <outlet property="acceptionTermsSwitch" destination="c0Q-XO-DkH" id="RHp-bz-UXc"/>
+                        <outlet property="backgroundImageView" destination="A46-yV-6uT" id="Anq-Iw-e8C"/>
+                        <outlet property="horizontalStackView" destination="QNi-Au-8BC" id="hnz-rd-Hjy"/>
+                        <outlet property="loginButton" destination="79d-ag-bqm" id="DYP-AC-zYD"/>
+                        <outlet property="loginTextField" destination="MHL-PT-pR7" id="0ie-Ce-dqV"/>
+                        <outlet property="mainLabel" destination="oA2-JN-7En" id="8R4-tg-MGk"/>
+                        <outlet property="passwordTextField" destination="eaW-bg-kh2" id="Xsx-e4-UQ7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1044.9275362318842" y="70.982142857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AR4-Vj-wjW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iij-uv-jnv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rYu-tc-SRK">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="rN2-QH-6eG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Usw-er-KXP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="134.78260869565219" y="70.982142857142847"/>
+        </scene>
+        <!--ListView-->
+        <scene sceneID="sFQ-Zo-4o6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ListView" id="VUw-dx-k0v" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="idO-VE-Ohu"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Il-DD-1sZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1742.0289855072465" y="65.625"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="79d-ag-bqm">
+            <size key="intrinsicContentSize" width="30" height="36"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="BackGroundImage" width="1080" height="1920"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
