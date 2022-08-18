@@ -113,32 +113,51 @@ class AuthorizationViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    //MARK: - Validation
-    private func textFieldValidation() {
-        guard let loginText = loginTextField.text, loginText.isEmpty == false else {
-            doNotPassValidationAlert(ErrorMessages.emptyField)
-            return
-        }
-        guard let passwordText = passwordTextField.text, passwordText.isEmpty == false else {
-            doNotPassValidationAlert(ErrorMessages.emptyField)
-            return
-        }
-        guard acceptionTermsSwitch.isOn == true  else {
-            doNotPassValidationAlert(ErrorMessages.incorrectSwitchStatus)
-            return
-        }
-        guard let emailText = loginTextField.text, emailText.isValidEmail() else {
-            doNotPassValidationAlert(ErrorMessages.incorrectEmail)
-            return
-        }
-        auth.isAuth = true
-        saveData()
-    }
-    
-    private func doNotPassValidationAlert(_ messageConstant:String) {
-        let alert = UIAlertController(title: "Ошибка", message: "\(messageConstant)", preferredStyle: UIAlertController.Style.alert)
-        let okButton = UIAlertAction(title: "ok", style: .default, handler: nil)
-        alert.addAction(okButton)
-        present(alert, animated: true, completion: nil)
-    }
 }
+    //MARK: - Text Field Delegate Methods
+    extension AuthorizationViewController: UITextFieldDelegate {
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            loginTextField.resignFirstResponder()
+            passwordTextField.resignFirstResponder()
+            return true
+        }
+        
+        func textFieldDidBeginEditing(_ textField: UITextField) {
+           // loginErrorDescriptionLabel.isHidden = true
+            loginTextField.layer.borderWidth = 0
+            passwordTextField.layer.borderWidth = 0
+        }
+        
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+        }
+    }
+//    //MARK: - Validation
+//    private func textFieldValidation() {
+//        guard let loginText = loginTextField.text, loginText.isEmpty == false else {
+//            doNotPassValidationAlert(ErrorMessages.emptyField)
+//            return
+//        }
+//        guard let passwordText = passwordTextField.text, passwordText.isEmpty == false else {
+//            doNotPassValidationAlert(ErrorMessages.emptyField)
+//            return
+//        }
+//        guard acceptionTermsSwitch.isOn == true  else {
+//            doNotPassValidationAlert(ErrorMessages.incorrectSwitchStatus)
+//            return
+//        }
+//        guard let emailText = loginTextField.text, emailText.isValidEmail() else {
+//            doNotPassValidationAlert(ErrorMessages.incorrectEmail)
+//            return
+//        }
+//        auth.isAuth = true
+//        saveData()
+//    }
+//
+//    private func doNotPassValidationAlert(_ messageConstant:String) {
+//        let alert = UIAlertController(title: "Ошибка", message: "\(messageConstant)", preferredStyle: UIAlertController.Style.alert)
+//        let okButton = UIAlertAction(title: "ok", style: .default, handler: nil)
+//        alert.addAction(okButton)
+//        present(alert, animated: true, completion: nil)
+//    }
+//}
