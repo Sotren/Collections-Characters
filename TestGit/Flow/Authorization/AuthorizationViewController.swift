@@ -17,6 +17,7 @@ class AuthorizationViewController: UIViewController {
         #endif
     }
     
+    private let viewModel = AuthViewModel()
     @IBOutlet weak var horizontalStackView: UIStackView!
     @IBOutlet weak var backgroundImageView: UIImageView! {
         didSet {
@@ -56,12 +57,13 @@ class AuthorizationViewController: UIViewController {
             acceptionTermsSwitch.subviews[0].subviews[0].backgroundColor = .red
         }
     }
-    var auth = UserContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupKeyboard()
         debugLogin()
+        bindData()
+       
     }
     
     func pushListVC() {
@@ -70,13 +72,19 @@ class AuthorizationViewController: UIViewController {
         navigationController?.pushViewController(listViewController, animated: true)
     }
     
-    func saveData() {
-        auth.login = loginTextField.text
-        auth.login = loginTextField.text
+    func bindData() {
+        viewModel.errorMessage.bind { [weak self] error  in
+            if  let error = error {
+                print(error)
+                // viewmodel.alert to do
+            } else {
+                // self!.pushListVC()
+            }
+        }
     }
     
     @IBAction func loginButtonPressed(_ sender: CustomButton) {
-        textFieldValidation()
+        viewModel.Login(login: loginTextField.text, password: passwordTextField.text, state: acceptionTermsSwitch)
     }
     
     @IBAction func switchPressed(_ sender: Any) {
@@ -113,26 +121,7 @@ class AuthorizationViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-}
-    //MARK: - Text Field Delegate Methods
-    extension AuthorizationViewController: UITextFieldDelegate {
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            loginTextField.resignFirstResponder()
-            passwordTextField.resignFirstResponder()
-            return true
-        }
-        
-        func textFieldDidBeginEditing(_ textField: UITextField) {
-           // loginErrorDescriptionLabel.isHidden = true
-            loginTextField.layer.borderWidth = 0
-            passwordTextField.layer.borderWidth = 0
-        }
-        
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            self.view.endEditing(true)
-        }
-    }
-//    //MARK: - Validation
+    //MARK: - Validation
 //    private func textFieldValidation() {
 //        guard let loginText = loginTextField.text, loginText.isEmpty == false else {
 //            doNotPassValidationAlert(ErrorMessages.emptyField)
@@ -153,11 +142,11 @@ class AuthorizationViewController: UIViewController {
 //        auth.isAuth = true
 //        saveData()
 //    }
-//
-//    private func doNotPassValidationAlert(_ messageConstant:String) {
-//        let alert = UIAlertController(title: "Ошибка", message: "\(messageConstant)", preferredStyle: UIAlertController.Style.alert)
-//        let okButton = UIAlertAction(title: "ok", style: .default, handler: nil)
-//        alert.addAction(okButton)
-//        present(alert, animated: true, completion: nil)
-//    }
-//}
+
+    private func doNotPassValidationAlert(_ messageConstant:String) {
+        let alert = UIAlertController(title: "Ошибка", message: "\(messageConstant)", preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "ok", style: .default, handler: nil)
+        alert.addAction(okButton)
+        present(alert, animated: true, completion: nil)
+    }
+}

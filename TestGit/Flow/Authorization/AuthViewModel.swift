@@ -6,75 +6,41 @@
 //
 
 import Foundation
+import UIKit
 
 class AuthViewModel {
     
+    var auth = UserContext()
+    var errorMessage: Observable<String?> = Observable(nil)
+ //   var errorAlert : Observable<UIAlertAction?> = Observable(nil)
+    func Login (login: String?, password: String?,state: UISwitch) {
+        guard let loginText = login, loginText.isEmpty == false else {
+            print(ErrorMessages.emptyField)
+            return
+        }
+        guard let passwordText = password, passwordText.isEmpty == false else {
+            print(ErrorMessages.emptyField)
+//            doNotPassValidationAlert(ErrorMessages.emptyField)
+            return
+        }
+        guard  state.isOn == true else {
+            print(ErrorMessages.incorrectSwitchStatus)
+            return
+        }
+        guard let emailText = login, emailText.isValidEmail() else {
+            print(ErrorMessages.incorrectEmail)
+            return
+        }
+        auth.login = login
+        auth.password = password
+        auth.isAuth = true
+    }
     
-        // MARK: - Stored Properties
-        private let loginManager: LoginManager
-        
-        //Here our model notify that was updated
-        private var credentials = Credentials() {
-            didSet {
-                username = credentials.username
-                password = credentials.password
-            }
-        }
-        
-        private var username = ""
-        private var password = ""
-        
-        var credentialsInputErrorMessage: Observable<String> = Observable("")
-        var isUsernameTextFieldHighLighted: Observable<Bool> = Observable(false)
-        var isPasswordTextFieldHighLighted: Observable<Bool> = Observable(false)
-        var errorMessage: Observable<String?> = Observable(nil)
-        
-        
-        init(loginManager: LoginManager) {
-            self.loginManager = loginManager
-        }
-        
-        //Here we update our model
-        func updateCredentials(username: String, password: String, otp: String? = nil) {
-            credentials.username = username
-            credentials.password = password
-        }
-        
-        
-        func login() {
-            loginManager.loginWithCredentials(username: username, password: password) { [weak self] (error) in
-                guard let error = error else {
-                    return
-                }
-                
-                self?.errorMessage.value = error.localizedDescription
-            }
-        }
-        
-        
-        func credentialsInput() -> CredentialsInputStatus {
-            if username.isEmpty && password.isEmpty {
-                credentialsInputErrorMessage.value = "Please provide username and password."
-                return .Incorrect
-            }
-            if username.isEmpty {
-                credentialsInputErrorMessage.value = "Username field is empty."
-                isUsernameTextFieldHighLighted.value = true
-                return .Incorrect
-            }
-            if password.isEmpty {
-                credentialsInputErrorMessage.value = "Password field is empty."
-                isPasswordTextFieldHighLighted.value = true
-                return .Incorrect
-            }
-            return .Correct
-        }
-    }
-
-    extension LoginViewModel {
-        enum CredentialsInputStatus {
-            case Correct
-            case Incorrect
-        }
-    }
+//    private func doNotPassValidationAlert(_ messageConstant:String) {
+//        let alert = UIAlertController(title: "Ошибка", message: "\(messageConstant)", preferredStyle: UIAlertController.Style.alert)
+//        let okButton = UIAlertAction(title: "ok", style: .default, handler: nil)
+//        alert.addAction(okButton)
+//       // present(alert, animated: true, completion: nil)
+//    }
+    
 }

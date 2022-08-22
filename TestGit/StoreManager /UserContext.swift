@@ -12,18 +12,6 @@ final class UserContext {
         case isAuth
     }
     
-    var token: String? {
-        get {
-            return queue.sync {
-                return keyChainService.token
-            }
-        }
-        set(newToken) {
-            queue.async(flags: .barrier) {
-                self.keyChainService.token = newToken
-            }
-        }
-    }
     var login: String? {
         get {
             return queue.sync {

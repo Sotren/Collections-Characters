@@ -34,8 +34,7 @@
 		EBFE6BF428AD0647009AAE42 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF328AD0647009AAE42 /* AuthViewModel.swift */; };
 		EBFE6BF628AD065E009AAE42 /* ActorListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF528AD065E009AAE42 /* ActorListViewModel.swift */; };
 		EBFE6BF828AD0687009AAE42 /* ActorSelectedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF728AD0687009AAE42 /* ActorSelectedViewModel.swift */; };
-		EBFE6BFA28AE4803009AAE42 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF928AE4803009AAE42 /* Credentials.swift */; };
-		EBFE6BFC28AE4A13009AAE42 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BFB28AE4A13009AAE42 /* Observable.swift */; };
+		EBFE6C0028AFC2BC009AAE42 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BFF28AFC2BC009AAE42 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,8 +66,7 @@
 		EBFE6BF328AD0647009AAE42 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		EBFE6BF528AD065E009AAE42 /* ActorListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorListViewModel.swift; sourceTree = "<group>"; };
 		EBFE6BF728AD0687009AAE42 /* ActorSelectedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorSelectedViewModel.swift; sourceTree = "<group>"; };
-		EBFE6BF928AE4803009AAE42 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
-		EBFE6BFB28AE4A13009AAE42 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		EBFE6BFF28AFC2BC009AAE42 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,8 +184,7 @@
 			children = (
 				EB3F13E72811201E00AC7E1F /* AuthorizationViewController.swift */,
 				EBFE6BF328AD0647009AAE42 /* AuthViewModel.swift */,
-				EBFE6BFB28AE4A13009AAE42 /* Observable.swift */,
-				EBFE6BF928AE4803009AAE42 /* Credentials.swift */,
+				EBFE6BFF28AFC2BC009AAE42 /* Observable.swift */,
 				EB3F13E92811201E00AC7E1F /* Main.storyboard */,
 			);
 			path = Authorization;
@@ -328,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBFE6C0028AFC2BC009AAE42 /* Observable.swift in Sources */,
 				EBF770A2282BD62B00871873 /* Character.swift in Sources */,
 				EB3A47B72823DADE00D35879 /* StringValidation.swift in Sources */,
 				EBF770B2282D342F00871873 /* CharacterManager.swift in Sources */,
@@ -341,10 +339,8 @@
 				EB3F13E82811201E00AC7E1F /* AuthorizationViewController.swift in Sources */,
 				EB3F13E42811201E00AC7E1F /* AppDelegate.swift in Sources */,
 				EBD7A940282538B00096AFEE /* ListTableViewCell.swift in Sources */,
-				EBFE6BFA28AE4803009AAE42 /* Credentials.swift in Sources */,
 				EBFE6BF428AD0647009AAE42 /* AuthViewModel.swift in Sources */,
 				EB3F13E62811201E00AC7E1F /* SceneDelegate.swift in Sources */,
-				EBFE6BFC28AE4A13009AAE42 /* Observable.swift in Sources */,
 				EBFE6BF628AD065E009AAE42 /* ActorListViewModel.swift in Sources */,
 				EBF770B6282E529000871873 /* Constants.swift in Sources */,
 				EBB581DF2851DAD100DAC21E /* Keychain.swift in Sources */,
