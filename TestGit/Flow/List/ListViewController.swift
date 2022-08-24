@@ -15,9 +15,7 @@ class ListViewController: UIViewController {
             self.listTableView.reloadData()
         }
     }
-    var localData = CharacterManager().charactersLocal
-    var characters: [Character] = []
-    var filteredCharacters: [Character] = []
+    let listViewModel = ActorListViewModel()
     var searchIsNotActive: Bool {
         guard let text = searchBar.text  else { return false}
         return  text.isEmpty
@@ -31,18 +29,9 @@ class ListViewController: UIViewController {
         self.listTableView.backgroundView = emptyLabel
     }
     
-    func requestData() {
-        CharacterManager.shared.fetchData(from: Networking.urlString) { character in
-            self.localData = character
-            self.characters = character
-            self.filteredCharacters = character
-            self.listTableView.reloadData()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestData()
+        listViewModel.requestData(listView: listTableView)
         listTableView.dataSource = self
         listTableView.delegate = self
         searchBar.delegate = self
@@ -63,8 +52,7 @@ class ListViewController: UIViewController {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredCharacters = searchText.isEmpty ? characters : characters.filter  {(item:Character) -> Bool in
-            // If dataItem matches the searchText, return true to include it
+        listViewModel.filteredCharacters = searchText.isEmpty ? listViewModel.characters : listViewModel.characters.filter  {(item:Character) -> Bool in
             return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         self.listTableView.reloadData()
@@ -84,25 +72,25 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchIsNotActive {
-            return characters.count
+            return listViewModel.characters.count
         }
         if tableView.visibleCells.isEmpty {
             setUpEmptyLabel()
         }
-        return filteredCharacters.count
+        return listViewModel.filteredCharacters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:  ListTableViewCell.identifier,for: indexPath) as! ListTableViewCell
         if searchIsNotActive {
-            cell.setDataToTableView(character: characters[indexPath.row])
+            cell.setDataToTableView(character: listViewModel.characters[indexPath.row] )
         }
-        cell.setDataToTableView(character: filteredCharacters[indexPath.row])
+        cell.setDataToTableView(character: listViewModel.filteredCharacters[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        pushToSelectedActor(char_id: characters[indexPath.row].char_id)
+        pushToSelectedActor(char_id: listViewModel.characters[indexPath.row].char_id )
     }
 }
 //MARK: - SearchBarDelegate
