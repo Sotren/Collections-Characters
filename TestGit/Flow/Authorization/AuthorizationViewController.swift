@@ -62,8 +62,8 @@ class AuthorizationViewController: UIViewController {
         super.viewDidLoad()
         setupKeyboard()
         debugLogin()
-        bindData()
-       
+        setupBinders()
+        viewModel.auth.isAuth = false
     }
     
     func pushListVC() {
@@ -72,23 +72,22 @@ class AuthorizationViewController: UIViewController {
         navigationController?.pushViewController(listViewController, animated: true)
     }
     
-    func bindData() {
+    func setupBinders() {
         viewModel.errorMessage.bind { [weak self] error  in
             if  let error = error {
-                print(error)
-                // viewmodel.alert to do
+                self?.alertError(alertText: error)
             } else {
-                // self!.pushListVC()
             }
         }
     }
     
     @IBAction func loginButtonPressed(_ sender: CustomButton) {
         viewModel.Login(login: loginTextField.text, password: passwordTextField.text, state: acceptionTermsSwitch)
+        pushListVC()
     }
     
     @IBAction func switchPressed(_ sender: Any) {
-        
+
     }
     
     //MARK: - KeyboardFrame
@@ -121,30 +120,11 @@ class AuthorizationViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    //MARK: - Validation
-//    private func textFieldValidation() {
-//        guard let loginText = loginTextField.text, loginText.isEmpty == false else {
-//            doNotPassValidationAlert(ErrorMessages.emptyField)
-//            return
-//        }
-//        guard let passwordText = passwordTextField.text, passwordText.isEmpty == false else {
-//            doNotPassValidationAlert(ErrorMessages.emptyField)
-//            return
-//        }
-//        guard acceptionTermsSwitch.isOn == true  else {
-//            doNotPassValidationAlert(ErrorMessages.incorrectSwitchStatus)
-//            return
-//        }
-//        guard let emailText = loginTextField.text, emailText.isValidEmail() else {
-//            doNotPassValidationAlert(ErrorMessages.incorrectEmail)
-//            return
-//        }
-//        auth.isAuth = true
-//        saveData()
-//    }
+}
 
-    private func doNotPassValidationAlert(_ messageConstant:String) {
-        let alert = UIAlertController(title: "Ошибка", message: "\(messageConstant)", preferredStyle: UIAlertController.Style.alert)
+extension AuthorizationViewController: AlertError {
+    func alertError(alertText: String) {
+        let alert = UIAlertController(title: "Ошибка", message: "\(alertText)", preferredStyle: UIAlertController.Style.alert)
         let okButton = UIAlertAction(title: "ok", style: .default, handler: nil)
         alert.addAction(okButton)
         present(alert, animated: true, completion: nil)
