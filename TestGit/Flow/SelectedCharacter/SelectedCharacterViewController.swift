@@ -22,8 +22,8 @@ class SelectedCharacterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.requestData(id: char_id)
         setupBinders()
-        viewModel.requestData()
     }
     
     func setupBinders() {
@@ -39,16 +39,5 @@ class SelectedCharacterViewController: UIViewController {
                 self.birthday.text = "Дата рождения: " + actor.birthday
             }
         }
-//
-//    private func setActorData (actorData: Character) {
-//        nameCharacter.text = "Имя актера: " + actorData.name
-//        let url = URL(string: "\(actorData.img)")
-//        imageView.kf.setImage(with: url)
-//        category.text = "Категория: " + actorData.category
-//        portrayed.text = "Играет роль: " + actorData.portrayed
-//        nickName.text = "Прозвище: " + actorData.nickname
-//        status.text = "Статус: " + actorData.status
-//        birthday.text = "Дата рождения: " + actorData.birthday
-//    }
 }
 }
