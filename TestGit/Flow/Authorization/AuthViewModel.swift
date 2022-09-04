@@ -8,34 +8,34 @@
 import Foundation
 import UIKit
 
-protocol AlertError {
-    func alertError (alertText: String)
+protocol AuthViewControllerDelegate {
+    func showAlert (alertText: String)
 }
+
 class AuthViewModel {
-    
     var auth = UserContext()
     var errorMessage: Observable<String?> = Observable(nil)
- //   var errorAlert : Observable<UIAlertAction?> = Observable(nil)
+    var delegate: AuthViewControllerDelegate?
+    
     func Login (login: String?, password: String?,state: UISwitch) {
         guard let loginText = login, loginText.isEmpty == false else {
-            print(ErrorMessages.emptyField)
-            return errorMessage.value = ErrorMessages.emptyField
+            delegate?.showAlert(alertText: ErrorMessages.emptyField)
+            return
         }
         guard let passwordText = password, passwordText.isEmpty == false else {
-            print(ErrorMessages.emptyField)
-            return errorMessage.value = ErrorMessages.emptyField
+            delegate?.showAlert(alertText: ErrorMessages.emptyField)
+            return
         }
         guard  state.isOn == true else {
-            print(ErrorMessages.incorrectSwitchStatus)
-            return errorMessage.value = ErrorMessages.incorrectSwitchStatus
+            delegate?.showAlert(alertText: ErrorMessages.incorrectSwitchStatus)
+            return
         }
         guard let emailText = login, emailText.isValidEmail() else {
-            print(ErrorMessages.incorrectEmail)
-            return errorMessage.value = ErrorMessages.incorrectEmail
+            delegate?.showAlert(alertText: ErrorMessages.incorrectEmail)
+            return
         }
         auth.login = login
         auth.password = password
         auth.isAuth = true
     }
 }
-

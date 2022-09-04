@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import AVFoundation
 
 //MARK: - View controller
 class AuthorizationViewController: UIViewController {
-   
+    
     func debugLogin() {
-        #if DEBUG
-                loginTextField.text = "myapp@swift.com"
-                passwordTextField.text = "password12345"
-        #endif
+#if DEBUG
+        loginTextField.text = "myapp@swift.com"
+        passwordTextField.text = "password12345"
+#endif
     }
     
     private let viewModel = AuthViewModel()
@@ -64,6 +65,7 @@ class AuthorizationViewController: UIViewController {
         debugLogin()
         setupBinders()
         viewModel.auth.isAuth = false
+        viewModel.delegate = self
     }
     
     func pushListVC() {
@@ -75,8 +77,7 @@ class AuthorizationViewController: UIViewController {
     func setupBinders() {
         viewModel.errorMessage.bind { [weak self] error  in
             if  let error = error {
-                self?.alertError(alertText: error)
-            } else {
+                // self?.alertError(alertText: error)
             }
         }
     }
@@ -87,7 +88,7 @@ class AuthorizationViewController: UIViewController {
     }
     
     @IBAction func switchPressed(_ sender: Any) {
-
+        
     }
     
     //MARK: - KeyboardFrame
@@ -122,8 +123,8 @@ class AuthorizationViewController: UIViewController {
     }
 }
 
-extension AuthorizationViewController: AlertError {
-    func alertError(alertText: String) {
+extension AuthorizationViewController: AuthViewControllerDelegate {
+    func showAlert(alertText: String) {
         let alert = UIAlertController(title: "Ошибка", message: "\(alertText)", preferredStyle: UIAlertController.Style.alert)
         let okButton = UIAlertAction(title: "ok", style: .default, handler: nil)
         alert.addAction(okButton)

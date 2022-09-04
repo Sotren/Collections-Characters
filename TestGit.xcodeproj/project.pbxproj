@@ -32,8 +32,8 @@
 		EBF7A7372851DCE400442775 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7A7362851DCE400442775 /* KeychainService.swift */; };
 		EBFE6BF228ACEA98009AAE42 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EBFE6BF128ACEA98009AAE42 /* Kingfisher */; };
 		EBFE6BF428AD0647009AAE42 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF328AD0647009AAE42 /* AuthViewModel.swift */; };
-		EBFE6BF628AD065E009AAE42 /* ActorListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF528AD065E009AAE42 /* ActorListViewModel.swift */; };
-		EBFE6BF828AD0687009AAE42 /* ActorSelectedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF728AD0687009AAE42 /* ActorSelectedViewModel.swift */; };
+		EBFE6BF628AD065E009AAE42 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF528AD065E009AAE42 /* ListViewModel.swift */; };
+		EBFE6BF828AD0687009AAE42 /*  SelectedCharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF728AD0687009AAE42 /*  SelectedCharacterViewModel.swift */; };
 		EBFE6C0028AFC2BC009AAE42 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BFF28AFC2BC009AAE42 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,8 +64,8 @@
 		EBF770B5282E529000871873 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EBF7A7362851DCE400442775 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		EBFE6BF328AD0647009AAE42 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		EBFE6BF528AD065E009AAE42 /* ActorListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorListViewModel.swift; sourceTree = "<group>"; };
-		EBFE6BF728AD0687009AAE42 /* ActorSelectedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorSelectedViewModel.swift; sourceTree = "<group>"; };
+		EBFE6BF528AD065E009AAE42 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		EBFE6BF728AD0687009AAE42 /*  SelectedCharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " SelectedCharacterViewModel.swift"; sourceTree = "<group>"; };
 		EBFE6BFF28AFC2BC009AAE42 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,7 +130,7 @@
 			children = (
 				EB41425F28462941004262CD /* SelectedCharacter.storyboard */,
 				EB41425B28462904004262CD /* SelectedCharacterViewController.swift */,
-				EBFE6BF728AD0687009AAE42 /* ActorSelectedViewModel.swift */,
+				EBFE6BF728AD0687009AAE42 /*  SelectedCharacterViewModel.swift */,
 			);
 			path = SelectedCharacter;
 			sourceTree = "<group>";
@@ -172,6 +172,7 @@
 		EBD7A93728251EAC0096AFEE /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				EBFE6C0128C4B956009AAE42 /* Observable */,
 				EB41425A284628E7004262CD /* SelectedCharacter */,
 				EBD7A93928251EC20096AFEE /* List */,
 				EBD7A93828251EB60096AFEE /* Authorization */,
@@ -184,7 +185,6 @@
 			children = (
 				EB3F13E72811201E00AC7E1F /* AuthorizationViewController.swift */,
 				EBFE6BF328AD0647009AAE42 /* AuthViewModel.swift */,
-				EBFE6BFF28AFC2BC009AAE42 /* Observable.swift */,
 				EB3F13E92811201E00AC7E1F /* Main.storyboard */,
 			);
 			path = Authorization;
@@ -194,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				EBD7A9252824FC370096AFEE /* ListViewController.swift */,
-				EBFE6BF528AD065E009AAE42 /* ActorListViewModel.swift */,
+				EBFE6BF528AD065E009AAE42 /* ListViewModel.swift */,
 				EBBE3932281A55F6002304E9 /* ListView.storyboard */,
 				EBF770B4282E51ED00871873 /* Cell */,
 			);
@@ -242,6 +242,14 @@
 				EBBE393D281A6897002304E9 /* CustomButton.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		EBFE6C0128C4B956009AAE42 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				EBFE6BFF28AFC2BC009AAE42 /* Observable.swift */,
+			);
+			path = Observable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,7 +339,7 @@
 				EBF770B2282D342F00871873 /* CharacterManager.swift in Sources */,
 				EBBE393E281A6897002304E9 /* CustomButton.swift in Sources */,
 				EBD7A9262824FC370096AFEE /* ListViewController.swift in Sources */,
-				EBFE6BF828AD0687009AAE42 /* ActorSelectedViewModel.swift in Sources */,
+				EBFE6BF828AD0687009AAE42 /*  SelectedCharacterViewModel.swift in Sources */,
 				EB41427F284DEF62004262CD /* UserContext.swift in Sources */,
 				EB41425C28462904004262CD /* SelectedCharacterViewController.swift in Sources */,
 				EBD7A946282A1D930096AFEE /* UITabelViewCell+Extension.swift in Sources */,
@@ -341,7 +349,7 @@
 				EBD7A940282538B00096AFEE /* ListTableViewCell.swift in Sources */,
 				EBFE6BF428AD0647009AAE42 /* AuthViewModel.swift in Sources */,
 				EB3F13E62811201E00AC7E1F /* SceneDelegate.swift in Sources */,
-				EBFE6BF628AD065E009AAE42 /* ActorListViewModel.swift in Sources */,
+				EBFE6BF628AD065E009AAE42 /* ListViewModel.swift in Sources */,
 				EBF770B6282E529000871873 /* Constants.swift in Sources */,
 				EBB581DF2851DAD100DAC21E /* Keychain.swift in Sources */,
 			);
