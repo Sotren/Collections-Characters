@@ -39,5 +39,5 @@ class SelectedCharacterViewController: UIViewController {
                 self?.birthday.text = "Дата рождения: " + actor.birthday
             }
         }
-}
+    }
 }

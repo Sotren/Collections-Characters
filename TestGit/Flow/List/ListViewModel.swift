@@ -12,16 +12,11 @@ import UIKit
 final class ListViewModel {
     
     var actors:Observable<[Character]?> = Observable(nil)
-    var localData:Observable<[Character]?> = Observable(nil)
-    
+
     func requestData(listView: UITableView) {
         CharacterManager.shared.fetchData(from: Networking.urlString) { [weak self] character in
-            if character.isEmpty {
-                self?.localData.value = CharacterManager().charactersLocal
-            } else {
-                self?.actors.value = character
-            }
-            listView.reloadData()
+            self?.actors.value = character
         }
+        listView.reloadData()
     }
 }

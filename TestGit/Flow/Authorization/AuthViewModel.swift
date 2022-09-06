@@ -14,7 +14,6 @@ protocol AuthViewControllerDelegate {
 
 class AuthViewModel {
     var auth = UserContext()
-    var errorMessage: Observable<String?> = Observable(nil)
     var delegate: AuthViewControllerDelegate?
     
     func Login (login: String?, password: String?,state: UISwitch) {

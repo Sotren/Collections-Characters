@@ -44,9 +44,13 @@ class ListViewController: UIViewController {
     
     func setupBinders() {
         listViewModel.actors.bind { [weak self] actor in
-            if let actors = actor {
+            if let actors = actor, actors.isEmpty == false {
                 self?.characters = actors
                 self?.filteredCharacters = actors
+            }
+            else {
+                self?.characters = CharacterManager().charactersLocal
+                self?.filteredCharacters = CharacterManager().charactersLocal
             }
         }
     }

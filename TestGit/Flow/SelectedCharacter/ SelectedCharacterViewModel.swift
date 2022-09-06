@@ -7,8 +7,8 @@
 
 import Foundation
 import UIKit
- 
-class  SelectedCharacterViewModel {
+
+class SelectedCharacterViewModel {
     
     let actor:Observable<Character?> = Observable(nil)
     

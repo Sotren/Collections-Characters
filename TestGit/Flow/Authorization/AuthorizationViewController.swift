@@ -63,7 +63,6 @@ class AuthorizationViewController: UIViewController {
         super.viewDidLoad()
         setupKeyboard()
         debugLogin()
-        setupBinders()
         viewModel.auth.isAuth = false
         viewModel.delegate = self
     }
@@ -72,14 +71,6 @@ class AuthorizationViewController: UIViewController {
         let storyboard = UIStoryboard(name: "ListView", bundle: nil)
         guard  let listViewController = storyboard.instantiateViewController(identifier: "ListViewControllerID") as? ListViewController else { return  }
         navigationController?.pushViewController(listViewController, animated: true)
-    }
-    
-    func setupBinders() {
-        viewModel.errorMessage.bind { [weak self] error  in
-            if  let error = error {
-                // self?.alertError(alertText: error)
-            }
-        }
     }
     
     @IBAction func loginButtonPressed(_ sender: CustomButton) {
