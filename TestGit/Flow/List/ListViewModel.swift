@@ -8,15 +8,13 @@
 import Foundation
 import UIKit
 
-
 final class ListViewModel {
     
-    var actors:Observable<[Character]?> = Observable(nil)
+    var actors: Observable <[Character]?> = Observable(nil)
 
-    func requestData(listView: UITableView) {
+    func requestData() {
         CharacterManager.shared.fetchData(from: Networking.urlString) { [weak self] character in
             self?.actors.value = character
         }
-        listView.reloadData()
     }
 }

@@ -16,7 +16,7 @@ class AuthViewModel {
     var auth = UserContext()
     var delegate: AuthViewControllerDelegate?
     
-    func Login (login: String?, password: String?,state: UISwitch) {
+    func login (login: String?, password: String?, state: UISwitch) {
         guard let loginText = login, loginText.isEmpty == false else {
             delegate?.showAlert(alertText: ErrorMessages.emptyField)
             return
@@ -25,7 +25,7 @@ class AuthViewModel {
             delegate?.showAlert(alertText: ErrorMessages.emptyField)
             return
         }
-        guard  state.isOn == true else {
+        guard state.isOn == true else {
             delegate?.showAlert(alertText: ErrorMessages.incorrectSwitchStatus)
             return
         }

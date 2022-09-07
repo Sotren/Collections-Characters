@@ -74,7 +74,7 @@ class AuthorizationViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: CustomButton) {
-        viewModel.Login(login: loginTextField.text, password: passwordTextField.text, state: acceptionTermsSwitch)
+        viewModel.login(login: loginTextField.text, password: passwordTextField.text, state: acceptionTermsSwitch)
         pushListVC()
     }
     

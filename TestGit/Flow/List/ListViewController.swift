@@ -8,6 +8,7 @@
 import UIKit
 
 class ListViewController: UIViewController {
+ 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var listTableView: UITableView! {
         didSet {
@@ -33,13 +34,14 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        listViewModel.requestData(listView: listTableView)
+        listViewModel.requestData()
         listTableView.dataSource = self
         listTableView.delegate = self
         searchBar.delegate = self
         setupBinders()
         setUpExit()
         listTableView.reloadData()
+       // listViewModel.delegate = self
     }
     
     func setupBinders() {
@@ -66,13 +68,6 @@ class ListViewController: UIViewController {
             return
         }
         navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredCharacters = searchText.isEmpty ? characters : characters.filter  {(item:Character) -> Bool in
-            return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
-        self.listTableView.reloadData()
     }
     
     private func pushToSelectedActor (char_id: Int) {
@@ -109,8 +104,4 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         pushToSelectedActor(char_id: characters[indexPath.row].char_id )
     }
-}
-//MARK: - SearchBarDelegate
-extension ListViewController: UISearchBarDelegate {
-    
 }

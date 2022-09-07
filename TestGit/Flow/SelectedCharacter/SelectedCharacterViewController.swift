@@ -27,7 +27,7 @@ class SelectedCharacterViewController: UIViewController {
     }
     
     func setupBinders() {
-        actorSelectedViewModel.actor.bind { [weak self ] actor in
+        actorSelectedViewModel.actor.bind { [weak self] actor in
             if let actor = actor {
                 self?.nameCharacter.text = "Имя актера: " + actor.name
                 let url = URL(string: "\(actor.img)")
