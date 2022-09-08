@@ -9,10 +9,3 @@ import Foundation
 import UIKit
 
 //MARK: - SearchBarDelegate
-extension ListViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        listViewModel.search(searchText: searchText)
-        self.listTableView.reloadData()
-    }
-}

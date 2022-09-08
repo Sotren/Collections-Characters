@@ -36,6 +36,7 @@ class ListViewController: UIViewController {
         listViewModel.requestData()
         listTableView.dataSource = self
         listTableView.delegate = self
+        listViewModel.delegate = self
         searchBar.delegate = self
         setUpExit()
     }
@@ -81,11 +82,23 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setDataToTableView(character: listViewModel.characters[indexPath.row] )
         }
         cell.setDataToTableView(character: listViewModel.filteredCharacters[indexPath.row])
-        listTableView.reloadData()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         pushToSelectedActor(char_id: listViewModel.characters[indexPath.row].char_id )
+    }
+}
+extension ListViewController: ListViewModelDelegate {
+    func reloadData() {
+        listTableView.reloadData()
+    }
+}
+
+extension ListViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        listViewModel.search(searchText: searchText)
+        self.listTableView.reloadData()
     }
 }
