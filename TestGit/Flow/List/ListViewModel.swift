@@ -10,11 +10,20 @@ import UIKit
 
 final class ListViewModel {
     
-    var actors: Observable <[Character]?> = Observable(nil)
-
+    var filteredCharacters: [Character] = []
+    var characters: [Character] = []
+    
     func requestData() {
         CharacterManager.shared.fetchData(from: Networking.urlString) { [weak self] character in
-            self?.actors.value = character
+            self?.filteredCharacters = character
+            self?.characters = character
+        }
+    }
+    
+    func search (searchText: String) {
+        let characters = filteredCharacters
+        filteredCharacters = searchText.isEmpty ? characters : characters.filter {(item:Character) -> Bool in
+            return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
     }
 }

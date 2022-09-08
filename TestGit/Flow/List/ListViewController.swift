@@ -8,7 +8,7 @@
 import UIKit
 
 class ListViewController: UIViewController {
- 
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var listTableView: UITableView! {
         didSet {
@@ -16,14 +16,13 @@ class ListViewController: UIViewController {
             self.listTableView.reloadData()
         }
     }
-    var characters: [Character] = []
-    var filteredCharacters: [Character] = []
     let listViewModel = ListViewModel()
     var searchIsNotActive: Bool {
-        guard let text = searchBar.text  else { return false}
+        guard let text = searchBar.text  else { return false }
         return  text.isEmpty
     }
     var auth = UserContext()
+    
     func setUpEmptyLabel() {
         let emptyLabel = UILabel()
         emptyLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 30)
@@ -38,23 +37,7 @@ class ListViewController: UIViewController {
         listTableView.dataSource = self
         listTableView.delegate = self
         searchBar.delegate = self
-        setupBinders()
         setUpExit()
-        listTableView.reloadData()
-       // listViewModel.delegate = self
-    }
-    
-    func setupBinders() {
-        listViewModel.actors.bind { [weak self] actor in
-            if let actors = actor, actors.isEmpty == false {
-                self?.characters = actors
-                self?.filteredCharacters = actors
-            }
-            else {
-                self?.characters = CharacterManager().charactersLocal
-                self?.filteredCharacters = CharacterManager().charactersLocal
-            }
-        }
     }
     
     func setUpExit () {
@@ -84,24 +67,25 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchIsNotActive {
-            return characters.count
+            return listViewModel.characters.count
         }
         if tableView.visibleCells.isEmpty {
             setUpEmptyLabel()
         }
-        return filteredCharacters.count
+        return listViewModel.filteredCharacters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:  ListTableViewCell.identifier,for: indexPath) as! ListTableViewCell
         if searchIsNotActive {
-            cell.setDataToTableView(character: characters[indexPath.row] )
+            cell.setDataToTableView(character: listViewModel.characters[indexPath.row] )
         }
-        cell.setDataToTableView(character: filteredCharacters[indexPath.row])
+        cell.setDataToTableView(character: listViewModel.filteredCharacters[indexPath.row])
+        listTableView.reloadData()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        pushToSelectedActor(char_id: characters[indexPath.row].char_id )
+        pushToSelectedActor(char_id: listViewModel.characters[indexPath.row].char_id )
     }
 }

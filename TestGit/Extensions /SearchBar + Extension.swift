@@ -12,9 +12,7 @@ import UIKit
 extension ListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredCharacters = searchText.isEmpty ? characters : characters.filter  {(item:Character) -> Bool in
-            return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
+        listViewModel.search(searchText: searchText)
         self.listTableView.reloadData()
     }
 }
