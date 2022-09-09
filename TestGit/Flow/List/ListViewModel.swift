@@ -11,6 +11,7 @@ import UIKit
 protocol ListViewModelDelegate {
     func reloadData ()
 }
+
 final class ListViewModel {
     
     var filteredCharacters: [Character] = []
@@ -32,7 +33,7 @@ final class ListViewModel {
     }
     
     func search (searchText: String) {
-        filteredCharacters = searchText.isEmpty ? characters : characters.filter {(item:Character) -> Bool in
+        filteredCharacters = searchText.isEmpty ? characters: characters.filter {(item: Character) -> Bool in
             return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
     }

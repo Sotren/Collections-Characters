@@ -89,16 +89,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         pushToSelectedActor(char_id: listViewModel.characters[indexPath.row].char_id )
     }
 }
+//MARK: - listViewModelDelegate
 extension ListViewController: ListViewModelDelegate {
     func reloadData() {
         listTableView.reloadData()
-    }
-}
-
-extension ListViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        listViewModel.search(searchText: searchText)
-        self.listTableView.reloadData()
     }
 }
