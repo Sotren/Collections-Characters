@@ -14,7 +14,7 @@ class SelectedCharacterViewModel {
         
     func requestData(id: Int) {
         CharacterManager.shared.fetchData(from: Networking.urlString + String(id)) { actorData  in
-            return  self.actor.value = actorData.first
+            return self.actor.value = actorData.first
         }
     }
 }

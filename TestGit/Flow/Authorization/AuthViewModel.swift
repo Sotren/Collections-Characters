@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 protocol AuthViewControllerDelegate {
-    func showAlert (alertText: String)
+    func showAlert(alertText: String)
 }
 
 class AuthViewModel {
     var auth = UserContext()
     var delegate: AuthViewControllerDelegate?
     
-    func login (login: String?, password: String?,state: UISwitch) {
+    func login(login: String?, password: String?, state: UISwitch) {
         guard let loginText = login, loginText.isEmpty == false else {
             delegate?.showAlert(alertText: ErrorMessages.emptyField)
             return

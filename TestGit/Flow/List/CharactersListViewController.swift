@@ -18,8 +18,8 @@ class CharactersListViewController: UIViewController {
     }
     let viewModel = CharactersListViewModel()
     var searchIsNotActive: Bool {
-        guard let text = searchBar.text  else {return false}
-        return  text.isEmpty
+        guard let text = searchBar.text else {return false}
+        return text.isEmpty
     }
     var auth = UserContext()
     
@@ -50,7 +50,7 @@ class CharactersListViewController: UIViewController {
         self.listTableView.reloadData()
     }
     
-    @objc func closeTapped () {
+    @objc func closeTapped() {
         auth.isAuth = false
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "AuthorizationViewControllerID") as? AuthorizationViewController else {
@@ -59,7 +59,7 @@ class CharactersListViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func pushToSelectedActor (char_id: Int) {
+    private func pushToSelectedActor(char_id: Int) {
         let storyboard = UIStoryboard(name: "SelectedCharacter", bundle: nil)
         guard let selectedCharacter = storyboard.instantiateViewController(identifier: "SelectedCharacterId") as? SelectedCharacterViewController else {
             return
