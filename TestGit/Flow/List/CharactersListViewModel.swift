@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol CharactersListViewModelDelegate {
-    func tableView()
+    func reloadData()
 }
 
 final class CharactersListViewModel {
@@ -23,11 +23,11 @@ final class CharactersListViewModel {
             if character.isEmpty {
                 self?.filteredCharacters = CharacterManager().charactersLocal
                 self?.characters = CharacterManager().charactersLocal
-                self?.delegate?.tableView()
+                self?.delegate?.reloadData()
             } else {
                 self?.filteredCharacters = character
                 self?.characters = character
-                self?.delegate?.tableView()
+                self?.delegate?.reloadData()
             }
         }
     }

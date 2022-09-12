@@ -37,7 +37,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="listTableView" destination="yLg-3F-PEJ" id="XIo-M0-28B"/>
+                        <outlet property="        TableView" destination="yLg-3F-PEJ" id="XIo-M0-28B"/>
                         <outlet property="searchBar" destination="vQ0-os-Z0j" id="oLV-zR-t9G"/>
                     </connections>
                 </viewController>

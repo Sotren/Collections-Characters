@@ -10,16 +10,16 @@ import UIKit
 class CharactersListViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var listTableView: UITableView! {
+    @IBOutlet weak var tableView: UITableView! {
         didSet {
-            self.listTableView.register(ListTableViewCell.nib, forCellReuseIdentifier: ListTableViewCell.identifier)
-            self.listTableView.reloadData()
+            self.tableView.register(ListTableViewCell.nib, forCellReuseIdentifier: ListTableViewCell.identifier)
+            self.tableView.reloadData()
         }
     }
     let viewModel = CharactersListViewModel()
     var searchIsNotActive: Bool {
         guard let text = searchBar.text else {return false}
-        return text.isEmpty
+        return  text.isEmpty
     }
     var auth = UserContext()
     
@@ -28,14 +28,14 @@ class CharactersListViewController: UIViewController {
         emptyLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 30)
         emptyLabel.text = "Данных по актерам нет"
         emptyLabel.textAlignment = NSTextAlignment.center
-        self.listTableView.backgroundView = emptyLabel
+        self.tableView.backgroundView = emptyLabel
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.requestData()
-        listTableView.dataSource = self
-        listTableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         viewModel.delegate = self
         searchBar.delegate = self
         setUpExit()
@@ -47,10 +47,10 @@ class CharactersListViewController: UIViewController {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.search(searchText: searchText)
-        self.listTableView.reloadData()
+        self.tableView.reloadData()
     }
     
-    @objc func closeTapped() {
+    @objc func closeTapped () {
         auth.isAuth = false
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "AuthorizationViewControllerID") as? AuthorizationViewController else {
@@ -59,7 +59,7 @@ class CharactersListViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func pushToSelectedActor(char_id: Int) {
+    private func pushToSelectedActor (char_id: Int) {
         let storyboard = UIStoryboard(name: "SelectedCharacter", bundle: nil)
         guard let selectedCharacter = storyboard.instantiateViewController(identifier: "SelectedCharacterId") as? SelectedCharacterViewController else {
             return
@@ -96,8 +96,8 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
 }
 //MARK: - listViewModelDelegate
 extension CharactersListViewController: CharactersListViewModelDelegate {
-    func tableView() {
-        listTableView.reloadData()
+    func reloadData() {
+        tableView.reloadData()
     }
 }
 //MARK: - SearchBarDelegate
