@@ -22,7 +22,7 @@
 		EBBE391C28191429002304E9 /* museosanscyrl_100.otf in Resources */ = {isa = PBXBuildFile; fileRef = EBBE391B28191429002304E9 /* museosanscyrl_100.otf */; };
 		EBBE3934281A55F6002304E9 /* ListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBBE3932281A55F6002304E9 /* ListView.storyboard */; };
 		EBBE393E281A6897002304E9 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBE393D281A6897002304E9 /* CustomButton.swift */; };
-		EBD7A9262824FC370096AFEE /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD7A9252824FC370096AFEE /* ListViewController.swift */; };
+		EBD7A9262824FC370096AFEE /* CharactersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD7A9252824FC370096AFEE /* CharactersListViewController.swift */; };
 		EBD7A940282538B00096AFEE /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD7A93E282538B00096AFEE /* ListTableViewCell.swift */; };
 		EBD7A941282538B00096AFEE /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBD7A93F282538B00096AFEE /* ListTableViewCell.xib */; };
 		EBD7A946282A1D930096AFEE /* UITabelViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD7A945282A1D930096AFEE /* UITabelViewCell+Extension.swift */; };
@@ -32,10 +32,9 @@
 		EBF7A7372851DCE400442775 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7A7362851DCE400442775 /* KeychainService.swift */; };
 		EBFE6BF228ACEA98009AAE42 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EBFE6BF128ACEA98009AAE42 /* Kingfisher */; };
 		EBFE6BF428AD0647009AAE42 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF328AD0647009AAE42 /* AuthViewModel.swift */; };
-		EBFE6BF628AD065E009AAE42 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF528AD065E009AAE42 /* ListViewModel.swift */; };
+		EBFE6BF628AD065E009AAE42 /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF528AD065E009AAE42 /* CharactersListViewModel.swift */; };
 		EBFE6BF828AD0687009AAE42 /*  SelectedCharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BF728AD0687009AAE42 /*  SelectedCharacterViewModel.swift */; };
 		EBFE6C0028AFC2BC009AAE42 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6BFF28AFC2BC009AAE42 /* Observable.swift */; };
-		EBFE6C0328C89599009AAE42 /* SearchBar + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6C0228C89598009AAE42 /* SearchBar + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +55,7 @@
 		EBBE391B28191429002304E9 /* museosanscyrl_100.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = museosanscyrl_100.otf; sourceTree = "<group>"; };
 		EBBE3933281A55F6002304E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ListView.storyboard; sourceTree = "<group>"; };
 		EBBE393D281A6897002304E9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		EBD7A9252824FC370096AFEE /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		EBD7A9252824FC370096AFEE /* CharactersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewController.swift; sourceTree = "<group>"; };
 		EBD7A93E282538B00096AFEE /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		EBD7A93F282538B00096AFEE /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		EBD7A945282A1D930096AFEE /* UITabelViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabelViewCell+Extension.swift"; sourceTree = "<group>"; };
@@ -65,10 +64,9 @@
 		EBF770B5282E529000871873 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EBF7A7362851DCE400442775 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		EBFE6BF328AD0647009AAE42 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		EBFE6BF528AD065E009AAE42 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		EBFE6BF528AD065E009AAE42 /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
 		EBFE6BF728AD0687009AAE42 /*  SelectedCharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " SelectedCharacterViewModel.swift"; sourceTree = "<group>"; };
 		EBFE6BFF28AFC2BC009AAE42 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		EBFE6C0228C89598009AAE42 /* SearchBar + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchBar + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,8 +193,8 @@
 		EBD7A93928251EC20096AFEE /* List */ = {
 			isa = PBXGroup;
 			children = (
-				EBD7A9252824FC370096AFEE /* ListViewController.swift */,
-				EBFE6BF528AD065E009AAE42 /* ListViewModel.swift */,
+				EBD7A9252824FC370096AFEE /* CharactersListViewController.swift */,
+				EBFE6BF528AD065E009AAE42 /* CharactersListViewModel.swift */,
 				EBBE3932281A55F6002304E9 /* ListView.storyboard */,
 				EBF770B4282E51ED00871873 /* Cell */,
 			);
@@ -208,7 +206,6 @@
 			children = (
 				EBD7A945282A1D930096AFEE /* UITabelViewCell+Extension.swift */,
 				EB3A47B62823DADE00D35879 /* StringValidation.swift */,
-				EBFE6C0228C89598009AAE42 /* SearchBar + Extension.swift */,
 			);
 			path = "Extensions ";
 			sourceTree = "<group>";
@@ -337,12 +334,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBFE6C0028AFC2BC009AAE42 /* Observable.swift in Sources */,
-				EBFE6C0328C89599009AAE42 /* SearchBar + Extension.swift in Sources */,
 				EBF770A2282BD62B00871873 /* Character.swift in Sources */,
 				EB3A47B72823DADE00D35879 /* StringValidation.swift in Sources */,
 				EBF770B2282D342F00871873 /* CharacterManager.swift in Sources */,
 				EBBE393E281A6897002304E9 /* CustomButton.swift in Sources */,
-				EBD7A9262824FC370096AFEE /* ListViewController.swift in Sources */,
+				EBD7A9262824FC370096AFEE /* CharactersListViewController.swift in Sources */,
 				EBFE6BF828AD0687009AAE42 /*  SelectedCharacterViewModel.swift in Sources */,
 				EB41427F284DEF62004262CD /* UserContext.swift in Sources */,
 				EB41425C28462904004262CD /* SelectedCharacterViewController.swift in Sources */,
@@ -353,7 +349,7 @@
 				EBD7A940282538B00096AFEE /* ListTableViewCell.swift in Sources */,
 				EBFE6BF428AD0647009AAE42 /* AuthViewModel.swift in Sources */,
 				EB3F13E62811201E00AC7E1F /* SceneDelegate.swift in Sources */,
-				EBFE6BF628AD065E009AAE42 /* ListViewModel.swift in Sources */,
+				EBFE6BF628AD065E009AAE42 /* CharactersListViewModel.swift in Sources */,
 				EBF770B6282E529000871873 /* Constants.swift in Sources */,
 				EBB581DF2851DAD100DAC21E /* Keychain.swift in Sources */,
 			);

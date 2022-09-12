@@ -8,34 +8,33 @@
 import Foundation
 import UIKit
 
-protocol ListViewModelDelegate {
-    func reloadData ()
+protocol CharactersListViewModelDelegate {
+    func tableView()
 }
 
-final class ListViewModel {
+final class CharactersListViewModel {
     
     var filteredCharacters: [Character] = []
     var characters: [Character] = []
-    var delegate: ListViewModelDelegate?
+    var delegate: CharactersListViewModelDelegate?
     
     func requestData() {
         CharacterManager.shared.fetchData(from: Networking.urlString) { [weak self] character in
-            if character.isEmpty == false {
-                self?.filteredCharacters = character
-                self?.characters = character
-                self?.delegate?.reloadData()
-            } else {
+            if character.isEmpty {
                 self?.filteredCharacters = CharacterManager().charactersLocal
                 self?.characters = CharacterManager().charactersLocal
-                self?.delegate?.reloadData()
+                self?.delegate?.tableView()
+            } else {
+                self?.filteredCharacters = character
+                self?.characters = character
+                self?.delegate?.tableView()
             }
         }
     }
     
-    func search (searchText: String) {
-        filteredCharacters = searchText.isEmpty ? characters: characters.filter {(item: Character) -> Bool in
+    func search(searchText: String) {
+        filteredCharacters = searchText.isEmpty ? characters : characters.filter {(item: Character) -> Bool in
             return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
     }
 }
-

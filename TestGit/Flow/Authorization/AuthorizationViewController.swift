@@ -69,7 +69,7 @@ class AuthorizationViewController: UIViewController {
     
     func pushListVC() {
         let storyboard = UIStoryboard(name: "ListView", bundle: nil)
-        guard  let listViewController = storyboard.instantiateViewController(identifier: "ListViewControllerID") as? ListViewController else { return  }
+        guard  let listViewController = storyboard.instantiateViewController(identifier: "ListViewControllerID") as? CharactersListViewController else { return  }
         navigationController?.pushViewController(listViewController, animated: true)
     }
     

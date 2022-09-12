@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class CharactersListViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var listTableView: UITableView! {
@@ -16,9 +16,9 @@ class ListViewController: UIViewController {
             self.listTableView.reloadData()
         }
     }
-    let listViewModel = ListViewModel()
+    let viewModel = CharactersListViewModel()
     var searchIsNotActive: Bool {
-        guard let text = searchBar.text  else { return false }
+        guard let text = searchBar.text  else {return false}
         return  text.isEmpty
     }
     var auth = UserContext()
@@ -33,16 +33,21 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        listViewModel.requestData()
+        viewModel.requestData()
         listTableView.dataSource = self
         listTableView.delegate = self
-        listViewModel.delegate = self
+        viewModel.delegate = self
         searchBar.delegate = self
         setUpExit()
     }
     
     func setUpExit () {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.search(searchText: searchText)
+        self.listTableView.reloadData()
     }
     
     @objc func closeTapped () {
@@ -64,34 +69,38 @@ class ListViewController: UIViewController {
     }
 }
 //MARK: - Extension  tableViewDelegate, DataSource
-extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+extension CharactersListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchIsNotActive {
-            return listViewModel.characters.count
+            return viewModel.characters.count
         }
         if tableView.visibleCells.isEmpty {
             setUpEmptyLabel()
         }
-        return listViewModel.filteredCharacters.count
+        return viewModel.filteredCharacters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:  ListTableViewCell.identifier,for: indexPath) as! ListTableViewCell
         if searchIsNotActive {
-            cell.setDataToTableView(character: listViewModel.characters[indexPath.row] )
+            cell.setDataToTableView(character: viewModel.characters[indexPath.row] )
         }
-        cell.setDataToTableView(character: listViewModel.filteredCharacters[indexPath.row])
+        cell.setDataToTableView(character: viewModel.filteredCharacters[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        pushToSelectedActor(char_id: listViewModel.characters[indexPath.row].char_id )
+        pushToSelectedActor(char_id: viewModel.characters[indexPath.row].char_id )
     }
 }
 //MARK: - listViewModelDelegate
-extension ListViewController: ListViewModelDelegate {
-    func reloadData() {
+extension CharactersListViewController: CharactersListViewModelDelegate {
+    func tableView() {
         listTableView.reloadData()
     }
+}
+//MARK: - SearchBarDelegate
+extension CharactersListViewController: UISearchBarDelegate {
+    
 }

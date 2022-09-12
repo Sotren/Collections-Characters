@@ -13,4 +13,3 @@ extension String {
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: self)
         }
     }
-

@@ -53,7 +53,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mainView = UIStoryboard(name: "Main", bundle: nil)
         
         if auth.isAuth == true {
-            let vc: ListViewController = listView.instantiateViewController(withIdentifier: "ListViewControllerID") as! ListViewController
+            let vc: CharactersListViewController = listView.instantiateViewController(withIdentifier: "ListViewControllerID") as! CharactersListViewController
             window?.rootViewController = UINavigationController(rootViewController: vc)
             self.window?.makeKeyAndVisible()
         } else {
