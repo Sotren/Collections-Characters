@@ -52,11 +52,7 @@ class CharactersListViewController: UIViewController {
     
     @objc func closeTapped () {
         auth.isAuth = false
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(identifier: "AuthorizationViewControllerID") as? AuthorizationViewController else {
-            return
-        }
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     private func pushToSelectedActor (charId: Int) {
