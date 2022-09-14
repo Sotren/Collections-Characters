@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol AuthViewControllerDelegate {
-    func showAlert(alertText: String)
+    func showAlert(text: String)
 }
 
 class AuthViewModel {
@@ -18,19 +18,19 @@ class AuthViewModel {
     
     func login(login: String?, password: String?, state: UISwitch) {
         guard let loginText = login, loginText.isEmpty == false else {
-            delegate?.showAlert(alertText: ErrorMessages.emptyField)
+            delegate?.showAlert(text: ErrorMessages.emptyField)
             return
         }
         guard let passwordText = password, passwordText.isEmpty == false else {
-            delegate?.showAlert(alertText: ErrorMessages.emptyField)
+            delegate?.showAlert(text: ErrorMessages.emptyField)
             return
         }
         guard state.isOn == true else {
-            delegate?.showAlert(alertText: ErrorMessages.incorrectSwitchStatus)
+            delegate?.showAlert(text: ErrorMessages.incorrectSwitchStatus)
             return
         }
         guard let emailText = login, emailText.isValidEmail() else {
-            delegate?.showAlert(alertText: ErrorMessages.incorrectEmail)
+            delegate?.showAlert(text: ErrorMessages.incorrectEmail)
             return
         }
         auth.login = login

@@ -47,7 +47,7 @@ class CharactersListViewController: UIViewController {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.search(searchText: searchText)
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     @objc func closeTapped () {
@@ -59,12 +59,12 @@ class CharactersListViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func pushToSelectedActor (char_id: Int) {
+    private func pushToSelectedActor (charId: Int) {
         let storyboard = UIStoryboard(name: "SelectedCharacter", bundle: nil)
         guard let selectedCharacter = storyboard.instantiateViewController(identifier: "SelectedCharacterId") as? SelectedCharacterViewController else {
             return
         }
-        selectedCharacter.char_id = char_id
+        selectedCharacter.charId = charId
         navigationController?.pushViewController(selectedCharacter, animated: true)
     }
 }
@@ -91,13 +91,15 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        pushToSelectedActor(char_id: viewModel.characters[indexPath.row].char_id )
+        pushToSelectedActor(charId: viewModel.characters[indexPath.row].charId)
     }
 }
 //MARK: - listViewModelDelegate
 extension CharactersListViewController: CharactersListViewModelDelegate {
     func reloadData() {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 //MARK: - SearchBarDelegate

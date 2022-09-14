@@ -17,7 +17,6 @@ final class CharactersListViewModel {
     var filteredCharacters: [Character] = []
     var characters: [Character] = []
     var delegate: CharactersListViewModelDelegate?
-    
     func requestData() {
         CharacterManager.shared.fetchData(from: Networking.urlString) { [weak self] character in
             if character.isEmpty {

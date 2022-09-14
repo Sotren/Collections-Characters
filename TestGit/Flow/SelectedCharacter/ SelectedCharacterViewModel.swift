@@ -11,10 +11,10 @@ import UIKit
 class SelectedCharacterViewModel {
     
     let actor: Observable<Character?> = Observable(nil)
-        
+    
     func requestData(id: Int) {
         CharacterManager.shared.fetchData(from: Networking.urlString + String(id)) { actorData  in
-            return self.actor.value = actorData.first
+            self.actor.value = actorData.first
         }
     }
 }

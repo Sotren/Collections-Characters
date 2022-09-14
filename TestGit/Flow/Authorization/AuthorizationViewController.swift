@@ -69,7 +69,7 @@ class AuthorizationViewController: UIViewController {
     
     func pushListVC() {
         let storyboard = UIStoryboard(name: "ListView", bundle: nil)
-        guard  let listViewController = storyboard.instantiateViewController(identifier: "ListViewControllerID") as? CharactersListViewController else { return  }
+        guard let listViewController = storyboard.instantiateViewController(identifier: "ListViewControllerID") as? CharactersListViewController else { return  }
         navigationController?.pushViewController(listViewController, animated: true)
     }
     
@@ -115,8 +115,8 @@ class AuthorizationViewController: UIViewController {
 }
 
 extension AuthorizationViewController: AuthViewControllerDelegate {
-    func showAlert(alertText: String) {
-        let alert = UIAlertController(title: "Ошибка", message: "\(alertText)", preferredStyle: UIAlertController.Style.alert)
+    func showAlert(text: String) {
+        let alert = UIAlertController(title: "Ошибка", message: "\(text)", preferredStyle: UIAlertController.Style.alert)
         let okButton = UIAlertAction(title: "ok", style: .default, handler: nil)
         alert.addAction(okButton)
         present(alert, animated: true, completion: nil)

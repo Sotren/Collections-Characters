@@ -37,8 +37,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="        TableView" destination="yLg-3F-PEJ" id="XIo-M0-28B"/>
                         <outlet property="searchBar" destination="vQ0-os-Z0j" id="oLV-zR-t9G"/>
+                        <outlet property="tableView" destination="yLg-3F-PEJ" id="YWk-aK-Ex0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDO-Lo-0bL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

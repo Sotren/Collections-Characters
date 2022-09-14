@@ -11,7 +11,7 @@ import Kingfisher
 class SelectedCharacterViewController: UIViewController {
     
     let actorSelectedViewModel =  SelectedCharacterViewModel()
-    var char_id: Int!
+    var charId: Int!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameCharacter: UILabel!
     @IBOutlet weak var category: UILabel!
@@ -22,21 +22,23 @@ class SelectedCharacterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        actorSelectedViewModel.requestData(id: char_id)
+        actorSelectedViewModel.requestData(id: charId)
         setupBinders()
     }
     
     func setupBinders() {
         actorSelectedViewModel.actor.bind { [weak self] actor in
             if let actor = actor {
-                self?.nameCharacter.text = "Имя актера: " + actor.name
-                let url = URL(string: "\(actor.img)")
-                self?.imageView.kf.setImage(with: url)
-                self?.category.text = "Категория: " + actor.category
-                self?.portrayed.text = "Играет роль: " + actor.portrayed
-                self?.nickName.text = "Прозвище: " + actor.nickname
-                self?.status.text = "Статус: " + actor.status
-                self?.birthday.text = "Дата рождения: " + actor.birthday
+                DispatchQueue.main.async {
+                    self?.nameCharacter.text = "Имя актера: " + actor.name
+                    let url = URL(string: "\(actor.img)")
+                    self?.imageView.kf.setImage(with: url)
+                    self?.category.text = "Категория: " + actor.category
+                    self?.portrayed.text = "Играет роль: " + actor.portrayed
+                    self?.nickName.text = "Прозвище: " + actor.nickname
+                    self?.status.text = "Статус: " + actor.status
+                    self?.birthday.text = "Дата рождения: " + actor.birthday
+                }
             }
         }
     }

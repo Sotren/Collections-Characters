@@ -21,6 +21,7 @@ class CharacterManager {
         URLSession.shared.dataTask(with: url) { [self] data, respond , Error in
             guard let data = data else { return }
             do {
+                JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
                 let characters = try JSONDecoder().decode([Character].self, from: data)
                 DispatchQueue.main.async {
                     completion(characters)
@@ -40,6 +41,7 @@ class CharacterManager {
             do {
                 let data = try Data(contentsOf: fileLocation)
                 let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                 let dataFromJson = try jsonDecoder.decode([Character].self, from: data)
                 self.charactersLocal = dataFromJson
             } catch {
