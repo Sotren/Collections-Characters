@@ -36,7 +36,7 @@ class CharacterManager {
     }
     
     
-    func readLocalJson () {
+    func readLocalJson() {
         if let fileLocation = Bundle.main.url(forResource: "Breakingbadapi" , withExtension: "json") {
             do {
                 let data = try Data(contentsOf: fileLocation)
