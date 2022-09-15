@@ -8,7 +8,7 @@
 import Foundation
 
 struct Character: Codable {
-    let char_id: Int
+    let charId: Int
     let name: String
     let birthday: String
     let img: String

@@ -22,5 +22,5 @@ struct ErrorMessages {
 }
 
 struct Networking {
-    static  let urlString = "https://www.breakingbadapi.com/api/characters/"
+    static let urlString = "https://www.breakingbadapi.com/api/characters/"
 }

@@ -14,7 +14,7 @@ import UIKit
             self.layer.cornerRadius = self.cornerRadius
         }
     }
-    @IBInspectable public  var borderColor: UIColor = UIColor.clear {
+    @IBInspectable public var borderColor: UIColor = UIColor.clear {
         didSet {
             self.layer.borderColor = self.borderColor.cgColor
         }

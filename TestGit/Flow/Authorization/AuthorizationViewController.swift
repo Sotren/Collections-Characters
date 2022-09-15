@@ -6,17 +6,19 @@
 //
 
 import UIKit
+import AVFoundation
 
 //MARK: - View controller
 class AuthorizationViewController: UIViewController {
-   
+    
     func debugLogin() {
-        #if DEBUG
-                loginTextField.text = "myapp@swift.com"
-                passwordTextField.text = "password12345"
-        #endif
+#if DEBUG
+        loginTextField.text = "myapp@swift.com"
+        passwordTextField.text = "password12345"
+#endif
     }
     
+    private let viewModel = AuthViewModel()
     @IBOutlet weak var horizontalStackView: UIStackView!
     @IBOutlet weak var backgroundImageView: UIImageView! {
         didSet {
@@ -56,27 +58,24 @@ class AuthorizationViewController: UIViewController {
             acceptionTermsSwitch.subviews[0].subviews[0].backgroundColor = .red
         }
     }
-    var auth = UserContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupKeyboard()
         debugLogin()
+        viewModel.auth.isAuth = false
+        viewModel.delegate = self
     }
     
     func pushListVC() {
         let storyboard = UIStoryboard(name: "ListView", bundle: nil)
-        guard  let listViewController = storyboard.instantiateViewController(identifier: "ListViewControllerID") as? ListViewController else { return  }
+        guard let listViewController = storyboard.instantiateViewController(identifier: "ListViewControllerID") as? CharactersListViewController else { return  }
         navigationController?.pushViewController(listViewController, animated: true)
     }
     
-    func saveData() {
-        auth.login = loginTextField.text
-        auth.login = loginTextField.text
-    }
-    
     @IBAction func loginButtonPressed(_ sender: CustomButton) {
-        textFieldValidation()
+        viewModel.login(login: loginTextField.text, password: passwordTextField.text, state: acceptionTermsSwitch)
+        pushListVC()
     }
     
     @IBAction func switchPressed(_ sender: Any) {
@@ -113,30 +112,11 @@ class AuthorizationViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    //MARK: - Validation
-    private func textFieldValidation() {
-        guard let loginText = loginTextField.text, loginText.isEmpty == false else {
-            doNotPassValidationAlert(ErrorMessages.emptyField)
-            return
-        }
-        guard let passwordText = passwordTextField.text, passwordText.isEmpty == false else {
-            doNotPassValidationAlert(ErrorMessages.emptyField)
-            return
-        }
-        guard acceptionTermsSwitch.isOn == true  else {
-            doNotPassValidationAlert(ErrorMessages.incorrectSwitchStatus)
-            return
-        }
-        guard let emailText = loginTextField.text, emailText.isValidEmail() else {
-            doNotPassValidationAlert(ErrorMessages.incorrectEmail)
-            return
-        }
-        auth.isAuth = true
-        saveData()
-    }
-    
-    private func doNotPassValidationAlert(_ messageConstant:String) {
-        let alert = UIAlertController(title: "Ошибка", message: "\(messageConstant)", preferredStyle: UIAlertController.Style.alert)
+}
+
+extension AuthorizationViewController: AuthViewControllerDelegate {
+    func showAlert(text: String) {
+        let alert = UIAlertController(title: "Ошибка", message: "\(text)", preferredStyle: UIAlertController.Style.alert)
         let okButton = UIAlertAction(title: "ok", style: .default, handler: nil)
         alert.addAction(okButton)
         present(alert, animated: true, completion: nil)
