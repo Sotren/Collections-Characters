@@ -12,14 +12,14 @@ class CharactersListViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
-            self.tableView.register(ListTableViewCell.nib, forCellReuseIdentifier: ListTableViewCell.identifier)
+            self.tableView.register(CharacterListTableViewCell.nib, forCellReuseIdentifier: CharacterListTableViewCell.identifier)
             self.tableView.reloadData()
         }
     }
     let viewModel = CharactersListViewModel()
     var searchIsNotActive: Bool {
         guard let text = searchBar.text else {return false}
-        return  text.isEmpty
+        return text.isEmpty
     }
     var auth = UserContext()
     
@@ -41,7 +41,7 @@ class CharactersListViewController: UIViewController {
         setUpExit()
     }
     
-    func setUpExit () {
+    func setUpExit() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
     }
     
@@ -50,12 +50,12 @@ class CharactersListViewController: UIViewController {
         tableView.reloadData()
     }
     
-    @objc func closeTapped () {
+    @objc func closeTapped() {
         auth.isAuth = false
         navigationController?.popViewController(animated: true)
     }
     
-    private func pushToSelectedActor (charId: Int) {
+    private func pushToSelectedActor(charId: Int) {
         let storyboard = UIStoryboard(name: "SelectedCharacter", bundle: nil)
         guard let selectedCharacter = storyboard.instantiateViewController(identifier: "SelectedCharacterId") as? SelectedCharacterViewController else {
             return
@@ -78,9 +78,9 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:  ListTableViewCell.identifier,for: indexPath) as! ListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CharacterListTableViewCell.identifier, for: indexPath) as! CharacterListTableViewCell
         if searchIsNotActive {
-            cell.setDataToTableView(character: viewModel.characters[indexPath.row] )
+            cell.setDataToTableView(character: viewModel.characters[indexPath.row])
         }
         cell.setDataToTableView(character: viewModel.filteredCharacters[indexPath.row])
         return cell
@@ -88,6 +88,7 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         pushToSelectedActor(charId: viewModel.characters[indexPath.row].charId)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 //MARK: - listViewModelDelegate

@@ -18,7 +18,7 @@ class CharacterManager {
     
     func fetchData(from urlString: String, with completion: @escaping ([Character]) -> Void) {
         guard let url = URL(string: urlString) else { return }
-        URLSession.shared.dataTask(with: url) { [self] data, respond , Error in
+        URLSession.shared.dataTask(with: url) { [self] data, respond, Error in
             guard let data = data else { return }
             do {
                 JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
@@ -37,7 +37,7 @@ class CharacterManager {
     
     
     func readLocalJson() {
-        if let fileLocation = Bundle.main.url(forResource: "Breakingbadapi" , withExtension: "json") {
+        if let fileLocation = Bundle.main.url(forResource: "Breakingbadapi", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: fileLocation)
                 let jsonDecoder = JSONDecoder()
@@ -49,5 +49,4 @@ class CharacterManager {
             }
         }
     }
-    
 }

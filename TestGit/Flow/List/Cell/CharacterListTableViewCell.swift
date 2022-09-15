@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 import Kingfisher
 
-class ListTableViewCell: UITableViewCell {
+class CharacterListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var photoImageView: UIImageView! {
         didSet {

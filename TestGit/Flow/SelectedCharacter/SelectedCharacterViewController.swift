@@ -10,7 +10,7 @@ import Kingfisher
 
 class SelectedCharacterViewController: UIViewController {
     
-    let actorSelectedViewModel =  SelectedCharacterViewModel()
+    let actorSelectedViewModel = SelectedCharacterViewModel()
     var charId: Int!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameCharacter: UILabel!

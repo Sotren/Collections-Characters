@@ -8,9 +8,9 @@
 import Foundation
 
 final class KeychainService {
-   
-    private lazy var  currentKeyChain = Keychain(service: SettingsKeyChain.keyChainName.rawValue)
-
+    
+    private lazy var currentKeyChain = Keychain(service: SettingsKeyChain.keyChainName.rawValue)
+    
     private enum SettingsKeyChain: String {
         case keyChainName
         case password
@@ -35,4 +35,3 @@ final class KeychainService {
         }
     }
 }
-
